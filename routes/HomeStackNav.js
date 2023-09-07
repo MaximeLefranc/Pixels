@@ -1,3 +1,6 @@
+// React Native
+import { Platform } from 'react-native';
+
 // Screens
 import Home from './../screens/Home';
 import Portfolio from './../screens/Portfolio';
@@ -15,6 +18,8 @@ const HomeStackNav = () => {
 
   const defaultOptions = {
     headerStyle: {
+      //? if i want do differents changes depending mobile platform
+      // backgroundColor: Platform.OS === 'android' ? Colors.lightBrown : Colors.lightBrown,
       backgroundColor: Colors.lightBrown,
     },
     headerTintColor: Colors.white,
