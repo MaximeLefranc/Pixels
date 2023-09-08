@@ -14,14 +14,17 @@ import { useEffect } from 'react';
 // };
 
 const Portfolio = ({ navigation, route }) => {
-  const { name, country, totalImg } = route.params;
+  const { name, country, totalImg, favColor } = route.params;
 
   // For change header style fo each component
   useEffect(() => {
     navigation.setOptions({
       // headerTitle: () => <Logo />,
-      headerTitle: 'Accueil',
+      headerTitle: `Profil de ${name}`,
       headerTitleAlign: 'center',
+      headerStyle: {
+        backgroundColor: favColor,
+      },
     });
   });
 
@@ -30,13 +33,21 @@ const Portfolio = ({ navigation, route }) => {
       <Text style={globalStyles.text}>{name}</Text>
       <Text style={globalStyles.text}>{country}</Text>
       <Text style={globalStyles.text}>{totalImg}</Text>
+      <Text style={globalStyles.text}>{favColor}</Text>
     </View>
   );
 };
 
 Portfolio.propTypes = {
   navigation: PropTypes.object.isRequired,
-  route: PropTypes.object,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      totalImg: PropTypes.number.isRequired,
+      favColor: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default Portfolio;
