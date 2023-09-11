@@ -8,8 +8,9 @@ import InriaRegular from './assets/fonts/InriaSans-Regular.ttf';
 import InriaBold from './assets/fonts/InriaSans-Bold.ttf';
 import InriaItalic from './assets/fonts/InriaSans-Italic.ttf';
 
-// Navigation
+// Navigation Component
 import HomeStackNav from './routes/HomeStackNav';
+import RootNavigator from './routes/RootNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,7 +37,7 @@ export default function App() {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <HomeStackNav />
+      <RootNavigator />
     </View>
   );
 }

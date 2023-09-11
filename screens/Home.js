@@ -1,10 +1,16 @@
+import { useCallback, useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import PropTypes from 'prop-types';
+
+// Styles
 import { globalStyles } from '../styles/AppStyles';
 
 // Component
 import PressableItems from '../components/PressableItem';
-import { useCallback } from 'react';
+import MaterialIconsHeader from '../components/MaterialIconsHeader';
+
+// React navigation header button
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 const Home = ({ navigation }) => {
   const DATA = [
@@ -57,6 +63,20 @@ const Home = ({ navigation }) => {
     },
     [DATA]
   );
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+          <Item
+            title="Menu"
+            iconName="menu"
+            onPress={() => alert(`Entrer dans le menu`)}
+          />
+        </HeaderButtons>
+      ),
+    });
+  });
 
   return (
     <View style={globalStyles.container}>

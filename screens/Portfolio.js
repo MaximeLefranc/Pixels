@@ -1,7 +1,13 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Button, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { globalStyles } from '../styles/AppStyles';
 import { useEffect } from 'react';
+
+// React navigation header buttons
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+
+// Component
+import MaterialIconsHeader from '../components/MaterialIconsHeader';
 
 //? if i want displayed a logo in place to title header
 // const Logo = () => {
@@ -25,6 +31,15 @@ const Portfolio = ({ navigation, route }) => {
       headerStyle: {
         backgroundColor: favColor,
       },
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+          <Item
+            title="info"
+            iconName="info-outline"
+            onPress={() => alert(`Portfolio de ${name}`)}
+          />
+        </HeaderButtons>
+      ),
     });
   });
 
