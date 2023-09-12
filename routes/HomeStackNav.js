@@ -4,31 +4,17 @@ import { Platform } from 'react-native';
 // React-Navigation
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Drawer Component
-import DrawerNav from './DrawerNav';
-
 // Screens
-import Home from './../screens/Home';
 import Portfolio from './../screens/Portfolio';
 import Photo from './../screens/Photo';
+import Home from './../screens/Home';
 
 // Colors
 import Colors from '../styles/Colors';
+import defaultNavStyle from '../utils/defautlNavStyle';
 
 const HomeStackNav = () => {
   const Stack = createNativeStackNavigator();
-
-  const defaultOptions = {
-    headerStyle: {
-      //? if i want do differents changes depending mobile platform
-      // backgroundColor: Platform.OS === 'android' ? Colors.lightBrown : Colors.lightBrown,
-      backgroundColor: Colors.lightBrown,
-    },
-    headerTintColor: Colors.white,
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
 
   const homeOptions = {
     headerTitle: 'Accueil',
@@ -52,8 +38,7 @@ const HomeStackNav = () => {
   };
 
   return (
-    <Stack.Navigator initialRouteName="Home" screenOptions={defaultOptions}>
-      <Stack.Screen name="drawer" component={DrawerNav} />
+    <Stack.Navigator initialRouteName="Home" screenOptions={defaultNavStyle}>
       <Stack.Screen name="Home" component={Home} options={homeOptions} />
       <Stack.Screen
         name="Portfolio"

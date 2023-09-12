@@ -66,12 +66,13 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     navigation.setOptions({
+      headerTitle: 'Accueil',
       headerLeft: () => (
         <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
           <Item
             title="Menu"
             iconName="menu"
-            onPress={() => alert(`Entrer dans le menu`)}
+            onPress={() => navigation.toggleDrawer()}
           />
         </HeaderButtons>
       ),
