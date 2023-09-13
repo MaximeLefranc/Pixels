@@ -7,10 +7,7 @@ import { globalStyles } from '../styles/AppStyles';
 
 // Component
 import PressableItems from '../components/PressableItem';
-import MaterialIconsHeader from '../components/MaterialIconsHeader';
-
-// React navigation header button
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import MenuDropboxComponent from '../components/MenuDropboxComponent';
 
 const Home = ({ navigation }) => {
   const DATA = [
@@ -68,13 +65,7 @@ const Home = ({ navigation }) => {
     navigation.setOptions({
       headerTitle: 'Accueil',
       headerLeft: () => (
-        <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
-          <Item
-            title="Menu"
-            iconName="menu"
-            onPress={() => navigation.toggleDrawer()}
-          />
-        </HeaderButtons>
+        <MenuDropboxComponent toggleMenu={() => navigation.toggleDrawer()} />
       ),
     });
   });
