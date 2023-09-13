@@ -8,7 +8,7 @@ import Colors from '../styles/Colors';
 const Drawer = createDrawerNavigator();
 
 const MainNav = () => {
-  const defaultDrawerOption = {
+  const defaultDrawerOptions = {
     headerShown: false,
     drawerHideStatusBarOnOpen: false,
     drawerStyle: {
@@ -20,11 +20,11 @@ const MainNav = () => {
       fontSize: 19,
     },
     drawerInactiveTintColor: Colors.white,
-    drawerActiveTintColor: Colors.lightBrown,
+    drawerActiveTintColor: Colors.cliked,
     drawerActiveBackgroundColor: 'inherit',
   };
   return (
-    <Drawer.Navigator screenOptions={defaultDrawerOption}>
+    <Drawer.Navigator screenOptions={defaultDrawerOptions}>
       <Drawer.Screen name="Accueil" component={HomeStackNav} />
       <Drawer.Screen
         name="Faq"
