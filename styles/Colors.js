@@ -2,5 +2,5 @@ export default {
   white: '#fff',
   cliked: 'palevioletred',
   lightBrown: 'salmon',
-  drawer: '#212121',
+  darkGrey: '#212121',
 };

@@ -9,8 +9,7 @@ import Portfolio from './../screens/Portfolio';
 import Photo from './../screens/Photo';
 import Home from './../screens/Home';
 
-// Colors
-import Colors from '../styles/Colors';
+// Default Navigation Style
 import defaultNavStyle from '../utils/defautlNavStyle';
 
 const HomeStackNav = () => {
@@ -39,7 +38,7 @@ const HomeStackNav = () => {
 
   return (
     <Stack.Navigator initialRouteName="Home" screenOptions={defaultNavStyle}>
-      <Stack.Screen name="Home" component={Home} options={homeOptions} />
+      <Stack.Screen name="HomeScreen" component={Home} options={homeOptions} />
       <Stack.Screen
         name="Portfolio"
         component={Portfolio}
