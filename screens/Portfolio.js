@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, Platform } from 'react-native';
+import { View, Text, Image, Button, Platform, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { globalStyles } from '../styles/AppStyles';
 import { useEffect } from 'react';
@@ -20,7 +20,7 @@ import MaterialIconsHeader from '../components/MaterialIconsHeader';
 // };
 
 const Portfolio = ({ navigation, route }) => {
-  const { name, country, totalImg, favColor } = route.params;
+  const { name, country, totalImg, favColor, img, desc } = route.params;
 
   // For change header style fo each component
   useEffect(() => {
@@ -44,12 +44,12 @@ const Portfolio = ({ navigation, route }) => {
   });
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.text}>{name}</Text>
-      <Text style={globalStyles.text}>{country}</Text>
-      <Text style={globalStyles.text}>{totalImg}</Text>
-      <Text style={globalStyles.text}>{favColor}</Text>
-    </View>
+    <ScrollView style={globalStyles.container}>
+      <View style={{ backgroundColor: favColor, ...globalStyles.profilInfos }}>
+        <Image style={globalStyles.smallProfilImg} source={{ uri: img }} />
+        <Text style={globalStyles.profileName}>{name}</Text>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -61,6 +61,8 @@ Portfolio.propTypes = {
       country: PropTypes.string.isRequired,
       totalImg: PropTypes.number.isRequired,
       favColor: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };

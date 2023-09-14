@@ -34,4 +34,21 @@ export const globalStyles = StyleSheet.create({
     fontFamily: 'InriaItalic',
     fontSize: 25,
   },
+  profilInfos: {
+    alignItems: 'center',
+    padding: 10,
+  },
+  smallProfilImg: {
+    width: 150,
+    height: 150,
+    borderRadius: 150 / 2,
+    margin: 9,
+    borderWidth: 6,
+    borderColor: Colors.white,
+  },
+  profileName: {
+    fontFamily: 'InriaBold',
+    color: Colors.white,
+    fontSize: 25,
+  },
 });
