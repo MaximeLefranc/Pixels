@@ -10,40 +10,52 @@ import SelectedStackNav from './SelectedStackNav';
 // Colors
 import Colors from '../styles/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 const BottomTabNav = () => {
   const Tab = createBottomTabNavigator();
+  const isAndroid = Platform.OS === 'android';
 
-  const bottomTabNavOptions = ({ route }) => ({
+  const bottomTabNavDefaultOptions = ({ route }) => ({
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
       if (route.name === 'Home') {
         iconName = focused ? 'ios-home-sharp' : 'ios-home-outline';
-      } else if (route.name === 'Likes') {
+      } else if (route.name === 'Favoris') {
         iconName = focused ? 'ios-thumbs-up' : 'ios-thumbs-up-outline';
       }
 
       return <Ionicons name={iconName} size={size} color={color} />;
     },
     headerShown: false,
-    tabBarInactiveTintColor: Colors.darkGrey,
-    tabBarActiveTintColor: Colors.cliked,
+    tabBarInactiveTintColor: isAndroid ? Colors.white : Colors.darkGrey,
+    tabBarActiveTintColor: isAndroid ? Colors.white : Colors.cliked,
     tabBarLabelStyle: {
       fontSize: 14,
     },
+    tabBarStyle: {
+      backgroundColor: isAndroid ? Colors.lightBrown : '',
+    },
   });
 
+  const favorisBottomTabNavOptions = {
+    tabBarLabel: 'Sélection',
+    tabBarStyle: {
+      backgroundColor: isAndroid ? Colors.darkGrey : '',
+    },
+  };
+
   return (
-    <Tab.Navigator screenOptions={bottomTabNavOptions}>
+    <Tab.Navigator screenOptions={bottomTabNavDefaultOptions}>
       <Tab.Screen
         name="Home"
         component={HomeStackNav}
         options={{ tabBarLabel: 'Accueil' }}
       />
       <Tab.Screen
-        name="Likes"
+        name="Favoris"
         component={SelectedStackNav}
-        options={{ tabBarLabel: "J'aime" }}
+        options={favorisBottomTabNavOptions}
       />
     </Tab.Navigator>
   );
