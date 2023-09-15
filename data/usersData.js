@@ -49,8 +49,8 @@ export const DATA = [
       },
       {
         id: 2,
-        url: 'https://cdn.pixabay.com/photo/2015/12/08/00/28/car-1081742_960_720.jpg',
-        title: 'Ford',
+        url: 'https://cdn.pixabay.com/photo/2015/05/28/23/12/auto-788747_1280.jpg',
+        title: 'Retro',
         photoDesc:
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam',
       },
@@ -109,8 +109,8 @@ export const DATA = [
       },
       {
         id: 4,
-        url: 'https://cdn.pixabay.com/photo/2015/11/07/11/17/dog-1030992_960_720.jpg',
-        title: 'Chow-chow',
+        url: 'https://cdn.pixabay.com/photo/2018/03/31/06/31/dog-3277416_1280.jpg',
+        title: 'Brown',
         photoDesc:
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quae eum nostrum pariatur exercitationem earum natus, dolor placeat! Animi quaerat ducimus fuga sequi a culpa sit illo iste alias aperiam',
       },

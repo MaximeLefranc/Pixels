@@ -1,13 +1,18 @@
 import { View, Text, Image, Button, Platform, ScrollView } from 'react-native';
-import PropTypes from 'prop-types';
-import { globalStyles } from '../styles/AppStyles';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 // React navigation header buttons
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 // Component
 import MaterialIconsHeader from '../components/MaterialIconsHeader';
+import TouchableImage from '../components/TouchableImage';
+
+// PropType
+import PropTypes from 'prop-types';
+
+// Style
+import { globalStyles } from '../styles/AppStyles';
 
 //? if i want displayed a logo in place to title header
 // const Logo = () => {
@@ -20,7 +25,18 @@ import MaterialIconsHeader from '../components/MaterialIconsHeader';
 // };
 
 const Portfolio = ({ navigation, route }) => {
-  const { name, country, totalImg, favColor, img, desc } = route.params;
+  const { name, country, totalImg, favColor, img, desc, photos } = route.params;
+
+  const selectPhoto = useCallback(
+    (photo) => {
+      navigation.navigate('Photo', {
+        url: photo.url,
+        title: photo.title,
+        desc: photo.photoDesc,
+      });
+    },
+    [photos]
+  );
 
   // For change header style fo each component
   useEffect(() => {
@@ -49,6 +65,20 @@ const Portfolio = ({ navigation, route }) => {
         <Image style={globalStyles.smallProfilImg} source={{ uri: img }} />
         <Text style={globalStyles.profileName}>{name}</Text>
       </View>
+      <View style={globalStyles.profilDescription}>
+        <Text style={globalStyles.titleBioText}>Bio :</Text>
+        <Text style={globalStyles.textBio}>{desc}</Text>
+      </View>
+      <View>
+        {photos.map((photo) => (
+          <TouchableImage
+            key={photo.id}
+            url={photo.url}
+            title={photo.title}
+            onSelectPhoto={() => selectPhoto(photo)}
+          />
+        ))}
+      </View>
     </ScrollView>
   );
 };
@@ -63,6 +93,14 @@ Portfolio.propTypes = {
       favColor: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
       desc: PropTypes.string.isRequired,
+      photos: PropTypes.arrayOf(
+        PropTypes.exact({
+          id: PropTypes.number.isRequired,
+          url: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+          photoDesc: PropTypes.string.isRequired,
+        }).isRequired
+      ).isRequired,
     }),
   }).isRequired,
 };

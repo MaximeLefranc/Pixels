@@ -22,6 +22,7 @@ const Home = ({ navigation }) => {
         favColor: item.favColor,
         img: item.img,
         desc: item.desc,
+        photos: item.photos,
       });
     },
     [DATA]

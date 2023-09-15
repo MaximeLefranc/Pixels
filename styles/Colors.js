@@ -3,4 +3,5 @@ export default {
   cliked: 'palevioletred',
   lightBrown: 'salmon',
   darkGrey: '#212121',
+  ghost: 'ghostwhite',
 };

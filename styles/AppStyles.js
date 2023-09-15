@@ -51,4 +51,52 @@ export const globalStyles = StyleSheet.create({
     color: Colors.white,
     fontSize: 25,
   },
+  profilDescription: {
+    backgroundColor: Colors.ghost,
+    padding: 15,
+    fontSize: 25,
+    fontFamily: 'InriaRegular',
+  },
+  titleBioText: {
+    fontSize: 25,
+    padding: 9,
+    fontFamily: 'InriaBold',
+  },
+  textBio: {
+    fontFamily: 'InriaRegular',
+    fontSize: 20,
+    padding: 9,
+  },
+  photoContainer: {
+    width: '100%',
+    height: 350,
+  },
+  bgPhoto: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
+  },
+  photoTitle: {
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    padding: 15,
+  },
+  photoTitleText: {
+    fontFamily: 'InriaRegular',
+    fontSize: 19,
+    color: Colors.white,
+  },
+  selectedImage: {
+    width: '100%',
+    height: 300,
+  },
+  photoDescription: {
+    padding: 15,
+    fontSize: 25,
+    fontFamily: 'InriaRegular',
+  },
+  textDescription: {
+    fontFamily: 'InriaRegular',
+    fontSize: 20,
+    padding: 9,
+  },
 });
