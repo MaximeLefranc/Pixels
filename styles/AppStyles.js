@@ -99,4 +99,19 @@ export const globalStyles = StyleSheet.create({
     fontSize: 20,
     padding: 9,
   },
+  emptyMsgWrapper: {
+    flex: 1,
+    backgroundColor: Colors.lightBrown,
+  },
+  emptyMsgText: {
+    textAlign: 'center',
+    color: Colors.darkGrey,
+    fontSize: 23,
+    backgroundColor: 'rgba(255,255,255,0.4)',
+    padding: 10,
+    marginHorizontal: 20,
+    marginVertical: 100,
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
 });

@@ -2,20 +2,25 @@ import { useCallback, useEffect } from 'react';
 import { FlatList, View } from 'react-native';
 import PropTypes from 'prop-types';
 
+// Redux
+import { useSelector } from 'react-redux';
+
 // Styles
 import { globalStyles } from '../styles/AppStyles';
 
 // Component
 import PressableItems from '../components/PressableItem';
 import MenuDropboxComponent from '../components/MenuDropboxComponent';
-
-// Data
-import { DATA } from '../data/usersData';
+import NoData from '../components/NoData';
 
 const Home = ({ navigation }) => {
+  const selectedCategories = useSelector(
+    (state) => state.users.selectedCategories
+  );
   const handleNavigate = useCallback(
     (item) => {
       navigation.navigate('Portfolio', {
+        id: item.id,
         name: item.name,
         country: item.country,
         totalImg: item.photos.length,
@@ -25,7 +30,7 @@ const Home = ({ navigation }) => {
         photos: item.photos,
       });
     },
-    [DATA]
+    [selectedCategories]
   );
 
   useEffect(() => {
@@ -37,10 +42,13 @@ const Home = ({ navigation }) => {
     });
   });
 
+  if (selectedCategories.length === 0) {
+    return <NoData message="Pas d'utilisateur trouvé avec cette catégorie" />;
+  }
   return (
     <View style={globalStyles.container}>
       <FlatList
-        data={DATA}
+        data={selectedCategories}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <PressableItems

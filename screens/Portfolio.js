@@ -1,6 +1,9 @@
 import { View, Text, Image, Button, Platform, ScrollView } from 'react-native';
 import { useCallback, useEffect } from 'react';
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+
 // React navigation header buttons
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
@@ -10,6 +13,12 @@ import TouchableImage from '../components/TouchableImage';
 
 // PropType
 import PropTypes from 'prop-types';
+
+// Actions type and creator
+import {
+  actionUserSelection,
+  actionUserUnselection,
+} from '../redux/actions/usersActions';
 
 // Style
 import { globalStyles } from '../styles/AppStyles';
@@ -25,7 +34,27 @@ import { globalStyles } from '../styles/AppStyles';
 // };
 
 const Portfolio = ({ navigation, route }) => {
-  const { name, country, totalImg, favColor, img, desc, photos } = route.params;
+  const { name, country, totalImg, favColor, img, desc, photos, id } =
+    route.params;
+
+  const dispatch = useDispatch();
+
+  const isOneUserSelected = useSelector((state) => {
+    const selectedUsers = state.users.selectedUsers;
+    const isSelected = selectedUsers.find((user) => user.id === id);
+    if (isSelected) {
+      return true;
+    }
+    return false;
+  });
+
+  const toggleSelectUser = useCallback(() => {
+    if (isOneUserSelected) {
+      dispatch(actionUserUnselection(parseInt(id)));
+    } else {
+      dispatch(actionUserSelection(parseInt(id)));
+    }
+  }, [isOneUserSelected]);
 
   const selectPhoto = useCallback(
     (photo) => {
@@ -53,6 +82,11 @@ const Portfolio = ({ navigation, route }) => {
             title="info"
             iconName="info-outline"
             onPress={() => alert(`Portfolio de ${name}`)}
+          />
+          <Item
+            title="Sélectionner"
+            iconName={isOneUserSelected ? 'thumb-up-alt' : 'thumb-up-off-alt'}
+            onPress={toggleSelectUser}
           />
         </HeaderButtons>
       ),
@@ -87,6 +121,7 @@ Portfolio.propTypes = {
   navigation: PropTypes.object.isRequired,
   route: PropTypes.shape({
     params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       country: PropTypes.string.isRequired,
       totalImg: PropTypes.number.isRequired,
