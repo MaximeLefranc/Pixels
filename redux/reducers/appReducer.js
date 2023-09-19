@@ -19,11 +19,16 @@ const appReducer = (state = initialState, action) => {
         selectedUsers: [newUserSelected, ...state.selectedUsers],
       };
     }
-    case USER_UNSELECTION:
+    case USER_UNSELECTION: {
+      const newUserSelected = removeUserWithId(
+        state.selectedUsers,
+        action.payload
+      );
       return {
         ...state,
-        selectedUsers: removeUserWithId(state.selectedUsers, action.payload),
+        selectedUsers: [...newUserSelected],
       };
+    }
 
     default:
       return state;

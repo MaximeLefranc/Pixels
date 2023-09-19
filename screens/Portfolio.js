@@ -1,4 +1,12 @@
-import { View, Text, Image, Button, Platform, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Button,
+  Platform,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import { useCallback, useEffect } from 'react';
 
 // Redux
@@ -48,13 +56,18 @@ const Portfolio = ({ navigation, route }) => {
     return false;
   });
 
-  const toggleSelectUser = useCallback(() => {
+  const handleToggleSelectUser = useCallback(() => {
     if (isOneUserSelected) {
       dispatch(actionUserUnselection(parseInt(id)));
     } else {
       dispatch(actionUserSelection(parseInt(id)));
+      Alert.alert(
+        'Photos enregistrées',
+        'Elles sont disponibles dans votre onglet "Sélection"',
+        [{ text: 'OK' }]
+      );
     }
-  }, [isOneUserSelected]);
+  }, [dispatch, id, isOneUserSelected]);
 
   const selectPhoto = useCallback(
     (photo) => {
@@ -86,7 +99,7 @@ const Portfolio = ({ navigation, route }) => {
           <Item
             title="Sélectionner"
             iconName={isOneUserSelected ? 'thumb-up-alt' : 'thumb-up-off-alt'}
-            onPress={toggleSelectUser}
+            onPress={handleToggleSelectUser}
           />
         </HeaderButtons>
       ),
