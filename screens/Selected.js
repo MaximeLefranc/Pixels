@@ -19,8 +19,7 @@ const Selected = ({ navigation }) => {
   const selectedUsers = useSelector((state) => state.users.selectedUsers);
 
   const ListItem = ({ item }) => {
-    const { photos, image, name } = item;
-
+    const { photos, img, name } = item;
     const selectPhoto = useCallback(
       (photo) => {
         navigation.navigate('PhotoScreen', {
@@ -40,8 +39,9 @@ const Selected = ({ navigation }) => {
               url={photo.url}
               title={photo.title}
               onSelectPhoto={() => selectPhoto(photo)}
-              authorImage={image}
+              authorImage={img}
               authorName={name}
+              showAuthor={true}
             />
           </View>
         ))}

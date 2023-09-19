@@ -4,9 +4,11 @@ import { ImageBackground, TouchableOpacity, View, Text } from 'react-native';
 // PropTypes
 import PropTypes from 'prop-types';
 
+// Component
+import ProfileImage from './ProfileImage';
+
 // Style
 import { globalStyles } from '../styles/AppStyles';
-import ProfileImage from './ProfileImage';
 
 const TouchableImage = ({
   onSelectPhoto,
@@ -14,6 +16,7 @@ const TouchableImage = ({
   title,
   authorImage,
   authorName,
+  showAuthor,
 }) => {
   return (
     <TouchableOpacity
@@ -22,8 +25,8 @@ const TouchableImage = ({
       onPress={onSelectPhoto}
     >
       <ImageBackground style={globalStyles.bgPhoto} source={{ uri: url }}>
-        {/* {authorImage && <ProfileImage url={authorImage} name={authorName} />} */}
         <View style={globalStyles.photoTitle}>
+          {showAuthor && <ProfileImage url={authorImage} name={authorName} />}
           <Text style={globalStyles.photoTitleText}>{title}</Text>
         </View>
       </ImageBackground>
@@ -32,6 +35,7 @@ const TouchableImage = ({
 };
 
 TouchableImage.defaultProps = {
+  showAuthor: false,
   authorImage: '',
   authorName: '',
 };
@@ -42,6 +46,7 @@ TouchableImage.propTypes = {
   title: PropTypes.string.isRequired,
   authorImage: PropTypes.string,
   authorName: PropTypes.string,
+  showAuthor: PropTypes.bool,
 };
 
 export default TouchableImage;

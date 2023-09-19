@@ -4,8 +4,17 @@ import { Image } from 'react-native';
 // PropTypes
 import PropTypes from 'prop-types';
 
-const ProfileImage = ({ url, authorName }) => {
-  return <Image source={{ uri: url }} title={`image de profil: ${name}`} />;
+// Style
+import { globalStyles } from '../styles/AppStyles';
+
+const ProfileImage = ({ url, name }) => {
+  return (
+    <Image
+      style={globalStyles.imageProfile}
+      source={{ uri: url }}
+      title={`image de profil: ${name}`}
+    />
+  );
 };
 
 ProfileImage.propTypes = {

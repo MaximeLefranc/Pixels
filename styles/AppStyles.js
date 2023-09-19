@@ -78,7 +78,9 @@ export const globalStyles = StyleSheet.create({
   },
   photoTitle: {
     backgroundColor: 'rgba(0,0,0,0.4)',
-    padding: 15,
+    padding: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   photoTitleText: {
     fontFamily: 'InriaRegular',
@@ -113,5 +115,13 @@ export const globalStyles = StyleSheet.create({
     marginVertical: 100,
     borderRadius: 20,
     overflow: 'hidden',
+  },
+  imageProfile: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+    borderRadius: 50,
+    borderWidth: 1,
+    borderColor: Colors.white,
   },
 });
