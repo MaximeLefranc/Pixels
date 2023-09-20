@@ -1,22 +1,37 @@
-import { useCallback, useEffect } from 'react';
-import { FlatList, View } from 'react-native';
-import PropTypes from 'prop-types';
+// Recat Native
+import { useCallback, useEffect, useState } from 'react';
+import { FlatList, Modal, View, Text } from 'react-native';
+
+// React-Navigation
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 // Redux
 import { useSelector } from 'react-redux';
 
-// Styles
-import { globalStyles } from '../styles/AppStyles';
-
 // Component
 import PressableItems from '../components/PressableItem';
 import MenuDropboxComponent from '../components/MenuDropboxComponent';
-import NoData from '../components/NoData';
+import MaterialIconsHeader from '../components/MaterialIconsHeader';
+
+// Material Icons
+import { MaterialIcons } from '@expo/vector-icons';
+
+// PropTypes
+import PropTypes from 'prop-types';
+
+// Styles
+import { globalStyles } from '../styles/AppStyles';
 
 const Home = ({ navigation }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const selectedCategories = useSelector(
     (state) => state.users.selectedCategories
   );
+
+  const handleSettingsModal = useCallback(() => {
+    setIsModalVisible(!isModalVisible);
+  }, [isModalVisible]);
+
   const handleNavigate = useCallback(
     (item) => {
       navigation.navigate('Portfolio', {
@@ -39,14 +54,35 @@ const Home = ({ navigation }) => {
       headerLeft: () => (
         <MenuDropboxComponent toggleMenu={() => navigation.toggleDrawer()} />
       ),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={MaterialIconsHeader}>
+          <Item
+            title="Réglages"
+            iconName="settings"
+            onPress={handleSettingsModal}
+          />
+        </HeaderButtons>
+      ),
     });
   });
 
-  if (selectedCategories.length === 0) {
-    return <NoData message="Pas d'utilisateur trouvé avec cette catégorie" />;
-  }
   return (
     <View style={globalStyles.container}>
+      <Modal
+        visible={isModalVisible}
+        animationType="slide"
+        transparent={true}
+        onPressOut={() => setIsModalVisible(!isModalVisible)}
+      >
+        <View style={globalStyles.modalBody}>
+          <MaterialIcons
+            style={globalStyles.modalClose}
+            name="close"
+            size={24}
+            onPress={() => setIsModalVisible(!isModalVisible)}
+          />
+        </View>
+      </Modal>
       <FlatList
         data={selectedCategories}
         keyExtractor={(item) => item.id}

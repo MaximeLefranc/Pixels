@@ -1,5 +1,4 @@
 import Colors from '../styles/Colors';
-import { CardStyleInterpolators } from '@react-navigation/stack';
 
 const defaultNavStyle = {
   headerStyle: {
@@ -12,7 +11,6 @@ const defaultNavStyle = {
     fontWeight: 'bold',
     fontSize: 19,
   },
-  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
 export default defaultNavStyle;

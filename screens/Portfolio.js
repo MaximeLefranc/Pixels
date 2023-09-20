@@ -59,6 +59,11 @@ const Portfolio = ({ navigation, route }) => {
   const handleToggleSelectUser = useCallback(() => {
     if (isOneUserSelected) {
       dispatch(actionUserUnselection(parseInt(id)));
+      Alert.alert(
+        'Photos supprimées',
+        `Les photos de ${name} ont bien été supprimées`,
+        [{ text: 'OK' }]
+      );
     } else {
       dispatch(actionUserSelection(parseInt(id)));
       Alert.alert(

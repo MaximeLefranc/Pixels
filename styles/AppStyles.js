@@ -124,4 +124,17 @@ export const globalStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.white,
   },
+  modalBody: {
+    flex: 1,
+    backgroundColor: Colors.ghost,
+    marginVertical: 60,
+    padding: 20,
+    alignSelf: 'center',
+    borderRadius: 10,
+    width: '90%',
+  },
+  modalClose: {
+    alignSelf: 'flex-end',
+    color: Colors.lightBrown,
+  },
 });
