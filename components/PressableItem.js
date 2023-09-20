@@ -9,10 +9,7 @@ const PressableItem = ({ item, handleNavigate }) => {
     <Pressable
       // onPress={()=> navigation.navigate('Portfolio', item)};
       onPress={handleNavigate}
-      style={({ pressed }) => [
-        { backgroundColor: pressed ? Colors.cliked : Colors.white },
-        globalStyles.profileItem,
-      ]}
+      style={globalStyles.profileItem}
     >
       <Text style={globalStyles.titleText}>{name}</Text>
       <Image style={globalStyles.profileImg} source={{ uri: img }} />

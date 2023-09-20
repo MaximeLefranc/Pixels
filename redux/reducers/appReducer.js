@@ -1,5 +1,6 @@
 import { DATA } from '../../data/usersData';
 import { removeUserWithId } from '../../selectors/userSelectors';
+import { SET_CATEGORIES_SETTINGS } from '../actions/settingsAction';
 import { USER_SELECTION, USER_UNSELECTION } from '../actions/usersActions';
 
 const initialState = {
@@ -27,6 +28,24 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedUsers: [...newUserSelected],
+      };
+    }
+    case SET_CATEGORIES_SETTINGS: {
+      const usedSettings = action.payload;
+      const selectedUsersByCategory = state.users.filter((user) => {
+        if (usedSettings.animals && user.category === 'animals') {
+          return true;
+        }
+        if (usedSettings.travels && user.category === 'travel') {
+          return true;
+        }
+        if (usedSettings.cars && user.category === 'cars') {
+          return true;
+        }
+      });
+      return {
+        ...state,
+        selectedCategories: selectedUsersByCategory,
       };
     }
 

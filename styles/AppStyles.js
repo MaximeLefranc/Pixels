@@ -137,4 +137,52 @@ export const globalStyles = StyleSheet.create({
     alignSelf: 'flex-end',
     color: Colors.lightBrown,
   },
+  settingsTitle: {
+    fontSize: 20,
+    padding: 9,
+    fontFamily: 'InriaBold',
+    textAlign: 'center',
+    margin: 5,
+    textTransform: 'uppercase',
+  },
+  settingsText: {
+    fontFamily: 'InriaItalic',
+    fontSize: 19,
+    padding: 9,
+    textAlign: 'center',
+  },
+  divider: {
+    borderWidth: 0.5,
+    borderColor: Colors.lightGrey,
+    marginVertical: 25,
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    marginBottom: 14,
+  },
+  settingsLabel: {
+    fontSize: 19,
+  },
+  validationContainer: {
+    marginTop: 50,
+  },
+  settingsValidationButton: {
+    borderColor: Colors.white,
+    backgroundColor: Colors.lightBrown,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 20,
+    marginHorizontal: 30,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  settingsValidationButtonText: {
+    color: Colors.white,
+    fontSize: 15,
+    textTransform: 'uppercase',
+  },
 });

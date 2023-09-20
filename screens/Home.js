@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import PressableItems from '../components/PressableItem';
 import MenuDropboxComponent from '../components/MenuDropboxComponent';
 import MaterialIconsHeader from '../components/MaterialIconsHeader';
+import Settings from '../components/Settings';
 
 // Material Icons
 import { MaterialIcons } from '@expo/vector-icons';
@@ -72,15 +73,16 @@ const Home = ({ navigation }) => {
         visible={isModalVisible}
         animationType="slide"
         transparent={true}
-        onPressOut={() => setIsModalVisible(!isModalVisible)}
+        onPressOut={handleSettingsModal}
       >
         <View style={globalStyles.modalBody}>
           <MaterialIcons
             style={globalStyles.modalClose}
             name="close"
             size={24}
-            onPress={() => setIsModalVisible(!isModalVisible)}
+            onPress={handleSettingsModal}
           />
+          <Settings toggleModal={handleSettingsModal} />
         </View>
       </Modal>
       <FlatList
